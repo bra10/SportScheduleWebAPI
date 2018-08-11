@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dnndev.meModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="gra_SportSchedule">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="Content" Type="ntext" Nullable="false" />
+          <Property Name="Title" Type="ntext" />
+          <Property Name="Note" Type="ntext" />
+          <Property Name="CreatedByUser" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleEventTeams">
+          <Key>
+            <PropertyRef Name="PoolTeamId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="PoolTeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoolId" Type="int" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="256" />
+          <Property Name="TeamId" Type="int" />
+          <Property Name="Wins" Type="int" />
+          <Property Name="Losses" Type="int" />
+          <Property Name="Ties" Type="int" />
+          <Property Name="Points" Type="int" />
+          <Property Name="RunsFor" Type="int" />
+          <Property Name="RunsAgainst" Type="int" />
+          <Property Name="Per" Type="int" />
+          <Property Name="GamesBack" Type="nvarchar" MaxLength="50" />
+          <Property Name="TeamNote" Type="nvarchar" MaxLength="256" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="CreatedByUser" Type="int" />
+          <Property Name="ViewOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleGames">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="GameId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="GameNumber" Type="int" />
+          <Property Name="GameType" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameDate" Type="datetime" />
+          <Property Name="GameHour" Type="int" />
+          <Property Name="GameMin" Type="int" />
+          <Property Name="GameAmPm" Type="nvarchar" MaxLength="2" />
+          <Property Name="TeamName1" Type="nvarchar" MaxLength="256" />
+          <Property Name="TeamName2" Type="nvarchar" MaxLength="256" />
+          <Property Name="TeamScore1" Type="int" />
+          <Property Name="TeamScore2" Type="int" />
+          <Property Name="TeamId1" Type="nvarchar" MaxLength="256" />
+          <Property Name="TeamId2" Type="nvarchar" MaxLength="256" />
+          <Property Name="Status" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="CreatedByUser" Type="int" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="GameTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleGameTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="TypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventId" Type="int" />
+          <Property Name="GameType" Type="nvarchar" MaxLength="100" />
+          <Property Name="GameValue" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedByUser" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ShowHome" Type="int" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="Elimination" Type="int" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleLocations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="CreatedByUser" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="LocationLink" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="gra_SportSchedulePools">
+          <Key>
+            <PropertyRef Name="PoolId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="PoolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoolName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="CreatedByUser" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleScheduleAddOns">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="EventId" Type="int" />
+          <Property Name="ScheduleText" Type="nchar" MaxLength="256" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="CreatedByUser" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleSchedules">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="ScheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScheduleType" Type="int" />
+          <Property Name="EditMode" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="Rules" Type="ntext" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleTeams">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="TeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="CreatedByUser" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedByUser" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sportScheduleFE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ModuleID" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeagueID" Type="int" />
+          <Property Name="CreatedByUser" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dnndevmeModelStoreContainer">
+          <EntitySet Name="gra_SportSchedule" EntityType="Self.gra_SportSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleEventTeams" EntityType="Self.gra_SportScheduleEventTeams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleGames" EntityType="Self.gra_SportScheduleGames" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleGameTypes" EntityType="Self.gra_SportScheduleGameTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleLocations" EntityType="Self.gra_SportScheduleLocations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportSchedulePools" EntityType="Self.gra_SportSchedulePools" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleScheduleAddOns" EntityType="Self.gra_SportScheduleScheduleAddOns" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleSchedules" EntityType="Self.gra_SportScheduleSchedules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gra_SportScheduleTeams" EntityType="Self.gra_SportScheduleTeams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sportScheduleFE" EntityType="Self.sportScheduleFE" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dnndev.meModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="gra_SportSchedule" EntityType="dnndev.meModel.gra_SportSchedule" />
+          <EntitySet Name="gra_SportScheduleEventTeams" EntityType="dnndev.meModel.gra_SportScheduleEventTeams" />
+          <EntitySet Name="gra_SportScheduleGames" EntityType="dnndev.meModel.gra_SportScheduleGames" />
+          <EntitySet Name="gra_SportScheduleGameTypes" EntityType="dnndev.meModel.gra_SportScheduleGameTypes" />
+          <EntitySet Name="gra_SportScheduleLocations" EntityType="dnndev.meModel.gra_SportScheduleLocations" />
+          <EntitySet Name="gra_SportSchedulePools" EntityType="dnndev.meModel.gra_SportSchedulePools" />
+          <EntitySet Name="gra_SportScheduleScheduleAddOns" EntityType="dnndev.meModel.gra_SportScheduleScheduleAddOns" />
+          <EntitySet Name="gra_SportScheduleSchedules" EntityType="dnndev.meModel.gra_SportScheduleSchedules" />
+          <EntitySet Name="gra_SportScheduleTeams" EntityType="dnndev.meModel.gra_SportScheduleTeams" />
+          <EntitySet Name="sportScheduleFEs" EntityType="dnndev.meModel.sportScheduleFE" />
+        </EntityContainer>
+        <EntityType Name="gra_SportSchedule">
+          <Key>
+            <PropertyRef Name="ModuleID" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUser" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleEventTeams">
+          <Key>
+            <PropertyRef Name="PoolTeamId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="PoolTeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoolId" Type="Int32" />
+          <Property Name="TeamName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TeamId" Type="Int32" />
+          <Property Name="Wins" Type="Int32" />
+          <Property Name="Losses" Type="Int32" />
+          <Property Name="Ties" Type="Int32" />
+          <Property Name="Points" Type="Int32" />
+          <Property Name="RunsFor" Type="Int32" />
+          <Property Name="RunsAgainst" Type="Int32" />
+          <Property Name="Per" Type="Int32" />
+          <Property Name="GamesBack" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TeamNote" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUser" Type="Int32" />
+          <Property Name="ViewOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleGames">
+          <Key>
+            <PropertyRef Name="GameId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="GameId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="GameNumber" Type="Int32" />
+          <Property Name="GameType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameDate" Type="DateTime" Precision="3" />
+          <Property Name="GameHour" Type="Int32" />
+          <Property Name="GameMin" Type="Int32" />
+          <Property Name="GameAmPm" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="TeamName1" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TeamName2" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TeamScore1" Type="Int32" />
+          <Property Name="TeamScore2" Type="Int32" />
+          <Property Name="TeamId1" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TeamId2" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="CreatedByUser" Type="Int32" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="GameTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleGameTypes">
+          <Key>
+            <PropertyRef Name="TypeId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventId" Type="Int32" />
+          <Property Name="GameType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GameValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedByUser" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShowHome" Type="Int32" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="Elimination" Type="Int32" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleLocations">
+          <Key>
+            <PropertyRef Name="LocationId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="CreatedByUser" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LocationLink" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="gra_SportSchedulePools">
+          <Key>
+            <PropertyRef Name="PoolId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="PoolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoolName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="CreatedByUser" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleScheduleAddOns">
+          <Key>
+            <PropertyRef Name="ItemId" />
+          </Key>
+          <Property Name="ItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="EventId" Type="Int32" />
+          <Property Name="ScheduleText" Type="String" MaxLength="256" FixedLength="true" Unicode="true" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="CreatedByUser" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleSchedules">
+          <Key>
+            <PropertyRef Name="ScheduleId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="ScheduleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScheduleType" Type="Int32" />
+          <Property Name="EditMode" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="Rules" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="gra_SportScheduleTeams">
+          <Key>
+            <PropertyRef Name="TeamId" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="TeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="CreatedByUser" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedByUser" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sportScheduleFE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ModuleID" Type="Int32" Nullable="false" />
+          <Property Name="LeagueID" Type="Int32" />
+          <Property Name="CreatedByUser" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dnndevmeModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="gra_SportSchedule">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportSchedule">
+              <MappingFragment StoreEntitySet="gra_SportSchedule">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleEventTeams">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleEventTeams">
+              <MappingFragment StoreEntitySet="gra_SportScheduleEventTeams">
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="TeamNote" ColumnName="TeamNote" />
+                <ScalarProperty Name="GamesBack" ColumnName="GamesBack" />
+                <ScalarProperty Name="Per" ColumnName="Per" />
+                <ScalarProperty Name="RunsAgainst" ColumnName="RunsAgainst" />
+                <ScalarProperty Name="RunsFor" ColumnName="RunsFor" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Ties" ColumnName="Ties" />
+                <ScalarProperty Name="Losses" ColumnName="Losses" />
+                <ScalarProperty Name="Wins" ColumnName="Wins" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="PoolId" ColumnName="PoolId" />
+                <ScalarProperty Name="PoolTeamId" ColumnName="PoolTeamId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleGames">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleGames">
+              <MappingFragment StoreEntitySet="gra_SportScheduleGames">
+                <ScalarProperty Name="GameTime" ColumnName="GameTime" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="TeamId2" ColumnName="TeamId2" />
+                <ScalarProperty Name="TeamId1" ColumnName="TeamId1" />
+                <ScalarProperty Name="TeamScore2" ColumnName="TeamScore2" />
+                <ScalarProperty Name="TeamScore1" ColumnName="TeamScore1" />
+                <ScalarProperty Name="TeamName2" ColumnName="TeamName2" />
+                <ScalarProperty Name="TeamName1" ColumnName="TeamName1" />
+                <ScalarProperty Name="GameAmPm" ColumnName="GameAmPm" />
+                <ScalarProperty Name="GameMin" ColumnName="GameMin" />
+                <ScalarProperty Name="GameHour" ColumnName="GameHour" />
+                <ScalarProperty Name="GameDate" ColumnName="GameDate" />
+                <ScalarProperty Name="GameType" ColumnName="GameType" />
+                <ScalarProperty Name="GameNumber" ColumnName="GameNumber" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="GameId" ColumnName="GameId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleGameTypes">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleGameTypes">
+              <MappingFragment StoreEntitySet="gra_SportScheduleGameTypes">
+                <ScalarProperty Name="Elimination" ColumnName="Elimination" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="ShowHome" ColumnName="ShowHome" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="GameValue" ColumnName="GameValue" />
+                <ScalarProperty Name="GameType" ColumnName="GameType" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleLocations">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleLocations">
+              <MappingFragment StoreEntitySet="gra_SportScheduleLocations">
+                <ScalarProperty Name="LocationLink" ColumnName="LocationLink" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportSchedulePools">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportSchedulePools">
+              <MappingFragment StoreEntitySet="gra_SportSchedulePools">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="PoolName" ColumnName="PoolName" />
+                <ScalarProperty Name="PoolId" ColumnName="PoolId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleScheduleAddOns">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleScheduleAddOns">
+              <MappingFragment StoreEntitySet="gra_SportScheduleScheduleAddOns">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="ScheduleText" ColumnName="ScheduleText" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleSchedules">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleSchedules">
+              <MappingFragment StoreEntitySet="gra_SportScheduleSchedules">
+                <ScalarProperty Name="Rules" ColumnName="Rules" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="EditMode" ColumnName="EditMode" />
+                <ScalarProperty Name="ScheduleType" ColumnName="ScheduleType" />
+                <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gra_SportScheduleTeams">
+            <EntityTypeMapping TypeName="dnndev.meModel.gra_SportScheduleTeams">
+              <MappingFragment StoreEntitySet="gra_SportScheduleTeams">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedByUser" ColumnName="UpdatedByUser" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="TeamId" ColumnName="TeamId" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sportScheduleFEs">
+            <EntityTypeMapping TypeName="dnndev.meModel.sportScheduleFE">
+              <MappingFragment StoreEntitySet="sportScheduleFE">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedByUser" ColumnName="CreatedByUser" />
+                <ScalarProperty Name="LeagueID" ColumnName="LeagueID" />
+                <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
